@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class CustomerServlet extends HttpServlet {
-    private final CustomerDAO customerDAO = new CustomerDAO(); // Initialize CustomerDAO
+    private final CustomerDAO customerDAO = new CustomerDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws IOException {
@@ -24,7 +24,7 @@ public class CustomerServlet extends HttpServlet {
                 jsonResponse.append(jsonCustomer).append(",");
             }
             if (!customers.isEmpty()) {
-                jsonResponse.deleteCharAt(jsonResponse.length() - 1); // Remove trailing comma
+                jsonResponse.deleteCharAt(jsonResponse.length() - 1);
             }
             jsonResponse.append("]");
 
@@ -94,7 +94,7 @@ public class CustomerServlet extends HttpServlet {
                     response.getWriter().write("{\"error\": \"Invalid id parameter\"}");
                 }
             } else {
-                response.setStatus(HttpServletResponse.SC_BAD_REQUEST); // Missing id parameter
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 response.getWriter().write("{\"error\": \"Missing id parameter\"}");
             }
         } catch (Exception e) {
